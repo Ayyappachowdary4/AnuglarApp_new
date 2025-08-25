@@ -127,3 +127,206 @@
     Class Binding example
   </button>
 </div>
+
+
+<div class="container mt-3">
+ <button class="btn btn-primary" (click)="isTableView = true">
+    Table View
+  </button>
+  <button class="btn btn-secondary" (click)="isTableView = false">
+    Card View
+  </button>
+
+  @if(isTableView){
+<div class="border border-3 rounded-3 p-2 m-2">
+  <div>User Data in Table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Geography</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(user of users; track user.id){
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          {{ user.address.street }}, {{ user.address.suite }},
+          {{ user.address.city }}, {{ user.address.zipcode }}
+        </td>
+        <td>
+          Lat: {{ user.address.geo.lat }},
+          Lng: {{ user.address.geo.lng }}
+        </td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.website }}</td>
+        <td>{{ user.company.name }}, {{ user.company.catchPhrase }}, {{ user.company.bs }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+  }
+
+  @else{
+<div class="card-group">
+  <div class="row">
+@for(user of users; track user.id){
+  <div class="col-md-4 mb-4">
+        <div class="card shadow-lg rounded-3 h-100">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">{{ user.name }}</h5>
+          </div>
+  <div class="card-body">
+    <p class="card-text">{{ user.id }}</p>
+    <p class="card-text"><strong>Username: </strong>{{ user.username }}</p>
+    <p class="card-text"><strong>Email: </strong>{{ user.email }}</p>
+    <p> <i class="bi bi-geo-alt"></i><strong>Address: </strong>{{ user.address.street }}, {{ user.address.suite }}, 
+                                                                {{ user.address.city }}, {{ user.address.zipcode }} </p>
+    <p class="card-text"> <strong>Geo: </strong> Lat: {{ user.address.geo.lat }}, Lng: {{ user.address.geo.lng }}</p>
+    <p class="card-text"><strong>Phone: </strong>{{ user.phone }}</p>
+    <p class="card-text"><strong>Website: </strong>{{ user.website }}</p>
+    <p class="card-text"><strong>Company: </strong> {{ user.company.name }} <br />
+            <em>"{{ user.company.catchPhrase }}"</em> <br />
+            <small>{{ user.company.bs }}</small></p>
+    </div>
+  </div>
+</div>
+}
+  </div>
+</div>
+  }
+</div>
+
+
+<div class="border border-3 rounded-3 p-2 m-2">
+  <div>User Data in Table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(emp of employeesData; track emp.id){
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.role }}</td>
+        <td [ngStyle]="{ 'color': emp.salary > 50000 ? 'green' : 'red' }">{{ emp.salary }}</td>
+        <td>{{ emp.status }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="border border-3 rounded-3 p-2 m-2">
+  <div>User Data in Table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(emp of employeesData; track emp.id){
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td [ngStyle]="{ 'color': emp.role == 'Manager' ? 'Blue' : 'black' }">{{ emp.role }}</td>
+        <td>{{ emp.salary }}</td>
+        <td>{{ emp.status }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="border border-3 rounded-3 p-2 m-2">
+  <div>User Data in Table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(emp of employeesData; track emp.id){
+      <tr [ngStyle]= "{
+            'background-color': emp.role === 'Manager' ? 'lightyellow' 
+                               : emp.role === 'Developer' ? 'lightblue' 
+                               : emp.role === 'Tester' ? 'lightpink' 
+                               : 'white'}">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.role }}</td>
+        <td>{{ emp.salary }}</td>
+        <td>{{ emp.status }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="border border-3 rounded-3 p-2 m-2">
+  <div>User Data in Table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(emp of employeesData; track emp.id) {
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.role }}</td>
+        <td>
+          <span 
+            class="badge"
+            [ngClass]="{
+              'bg-success': emp.salary > 70000,
+              'bg-warning text-dark': emp.salary >= 40000 && emp.salary <= 70000,
+              'bg-danger': emp.salary < 40000
+            }">
+            {{ emp.salary }}
+          </span>
+        </td>
+        <td>{{ emp.status }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

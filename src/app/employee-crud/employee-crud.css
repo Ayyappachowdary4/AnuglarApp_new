@@ -1,0 +1,13 @@
+
+/* Change header background and text color */
+.custom-header th {
+  background-color: #4CAF50; /* green background */
+  color: white;              /* white text */
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Optional: hover effect on table rows */
+.table-striped tbody tr:hover {
+  background-color: #f1f1f1;
+}

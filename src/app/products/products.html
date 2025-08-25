@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <h3 class="mb-3">Product List</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price ($)</th>
+        <th>Category</th>
+        <th>Rating</th>
+        <th>Stock Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(product of products | paginate: { itemsPerPage: 4, currentPage: p };track $index) {
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>
+          <img [src]="product.image" alt="{{ product.title }}" width="60">
+        </td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.rating.rate }} ⭐</td>
+        <td>{{ product.rating.count }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+   <div class='col-sm-4 offset-4 mt-2'>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+</div>

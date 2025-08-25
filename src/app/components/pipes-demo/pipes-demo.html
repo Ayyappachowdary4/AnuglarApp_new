@@ -1,0 +1,19 @@
+<div class="container my-4">
+  <h3 class="text-center">Pipes Demo</h3>
+  <hr />
+
+  <h4>Ordinal Pipe</h4>
+  <ul>
+    <li *ngFor="let num of numbers">{{ num | ordinal }}</li>
+  </ul>
+
+  <h4>Roman Pipe</h4>
+  <ul>
+    <li *ngFor="let num of romanNumbers">{{ num }} = {{ num | roman }}</li>
+  </ul>
+
+  <h4>Age Pipe</h4>
+  <ul>
+    <li *ngFor="let dob of birthDates">{{ dob }} → {{ dob | age }}</li>
+  </ul>
+</div>

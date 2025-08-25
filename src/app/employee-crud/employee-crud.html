@@ -1,0 +1,102 @@
+<div class="container mt-4">
+
+  <h3 class="mb-3">Employee CRUD</h3>
+
+  
+  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addEmpModal">
+    <i class="fa fa-plus"></i> Add Employee
+  </button>
+
+  
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark custom-header">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Gender</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of employees; track $index) {
+        <tr>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.role }}</td>
+          <td>{{ emp.Gender }}</td>
+          <td>{{ emp.status }}</td>
+          <td>
+            <!----------------- View Button --------------------------------->
+  <button class="btn btn-info btn-sm me-2" title="View Employee"
+          data-bs-toggle="modal" data-bs-target="#empModal"
+          (click)="viewEmployee(emp)">
+    <i class="fa fa-eye"></i> View
+  </button>
+
+  <!-- -------------------Delete Button --------------------------------------------->
+  <button class="btn btn-danger btn-sm" title="Delete Employee"
+          (click)="deleteEmployee(emp.id)">
+    <i class="fa fa-trash"></i> Delete
+  </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<!----------------------------- Add Employee Modal ----------------------------------------->
+<div class="modal fade" id="addEmpModal" tabindex="-1" aria-labelledby="addEmpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEmpModalLabel">Add New Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #empForm="ngForm" (ngSubmit)="addEmployee()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="newEmployee.name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" id="role" class="form-control" [(ngModel)]="newEmployee.role" name="role" required>
+          </div>
+          <div class="mb-3">
+            <label for="Gender" class="form-label">Gender</label>
+            <input type="text" id="Gender" class="form-control" [(ngModel)]="newEmployee.Gender" name="Gender" required>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <input type="text" id="status" class="form-control" [(ngModel)]="newEmployee.status" name="status" required>
+          </div>
+          <button type="submit" class="btn btn-success" [disabled]="!empForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------View Employee Modal ----------------------------------------->
+<div class="modal fade" id="empModal" tabindex="-1" aria-labelledby="empModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="empModalLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      @if (selectedEmployee) {
+        <div class="modal-body">
+          <p><strong>ID:</strong> {{ selectedEmployee.id }}</p>
+          <p><strong>Name:</strong> {{ selectedEmployee.name }}</p>
+          <p><strong>Role:</strong> {{ selectedEmployee.role }}</p>
+          <p><strong>Gender:</strong> {{ selectedEmployee.Gender }}</p>
+          <p><strong>Status:</strong> {{ selectedEmployee.status }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

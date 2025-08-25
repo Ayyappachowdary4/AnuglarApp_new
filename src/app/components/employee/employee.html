@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Employee List</h2>
+
+  <select (change)="onFilterChange($event)" class="form-select mb-3">
+    <option value="all">All Employees</option>
+    <option value="male">Male Employees</option>
+    <option value="female">Female Employees</option>
+  </select>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of employees; track emp.id) {
+        <tr>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.gender }}</td>
+          <td>{{ emp.role }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
