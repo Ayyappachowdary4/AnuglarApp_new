@@ -15,10 +15,6 @@ export class Employee {
 
   constructor(private employeeService: EmployeeService) {}
 
-
-
-
-
   ngOnInit(): void {
     this.showEmployees();
   }
@@ -29,11 +25,15 @@ export class Employee {
   }
 
   showEmployees() {
-    if (this.filter === 'male') {
+
+    if (this.filter === 'male')
+       {
       this.employees = this.employeeService.getMaleEmployees();
-    } else if (this.filter === 'female') {
+    } 
+    else if (this.filter === 'female') {
       this.employees = this.employeeService.getFemaleEmployees();
-    } else {
+    } 
+    else {
       this.employees = this.employeeService.getAllEmployees();
     }
   }
