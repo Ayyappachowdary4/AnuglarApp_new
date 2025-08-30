@@ -14,11 +14,11 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   isLoading = false;
 
-  // Form
+  
   productForm: Product = { title: '', category: '', price: 0, image: '' };
   isEditMode = false;
 
-  // Modal
+
   selectedProduct: Product | null = null;
 
   constructor(private productService: ProductService) {}

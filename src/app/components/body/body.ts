@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PipesDemo } from '../pipes-demo/pipes-demo';
 import { HttpDemo1 } from '../http-demo1/http-demo1';
 //import { Products } from '../../products/products';
+import { EmployeeAssignList } from '../../employeeassign-list/employeeassign-list'; 
 import { ProductsComponent } from '../../products/products';
 import { CommentList } from '../comment-list/comment-list';
 //import { Math1Demo } from '../math1-demo/math1-demo';
@@ -14,7 +15,8 @@ import { CommentList } from '../comment-list/comment-list';
   standalone: true,
   imports: [
     CommonModule,
-    ProductsComponent,
+    //ProductsComponent,
+    EmployeeAssignList,
     // PipesDemo,
    // Math1Demo,
    // Math2Demo

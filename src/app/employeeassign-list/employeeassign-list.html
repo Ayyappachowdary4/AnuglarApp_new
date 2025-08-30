@@ -1,0 +1,35 @@
+<h4 class="text-center">EmployeeAssign List ({{ employees.length }})</h4>
+
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-sm-6">
+      <input type="search" class="form-control" [(ngModel)]="searchText" placeholder="Search by name">
+    </div>
+    <div class="col-sm-6">
+      <!-- <button class="btn btn-success mx-2" (click)="filterData()">Search</button> -->
+      <button class="btn btn-primary" (click)="addNewEmployee()">Add Employee</button>
+      <button class="btn btn-warning" (click)="clearAllEmployees()">Clear All</button>
+    </div>
+  </div>
+
+  <div class="row">
+    @for(emp of employees | paginate: { itemsPerPage: 4, currentPage: p }; track $index) {
+      <div class="col-sm-3 mb-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">{{ emp.name }}</h5>
+            <p class="card-text">{{ emp.role }}</p>
+            <p class="card-text">{{ emp.salary }}</p>
+            <button class="btn btn-danger w-100" (click)="deleteEmployee(emp.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-sm-4 offset-4">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

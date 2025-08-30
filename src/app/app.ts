@@ -14,7 +14,7 @@ import { Employee } from './components/employee/employee';
     // Categories,   
     // Carousel,     
     // Products,
-    Employee,   
+    //Employee,   
     BodyComponent,
     Footer,
     
