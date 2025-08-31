@@ -6,6 +6,7 @@ import { HttpDemo1 } from '../http-demo1/http-demo1';
 import { EmployeeAssignList } from '../../employeeassign-list/employeeassign-list'; 
 import { ProductsComponent } from '../../products/products';
 import { CommentList } from '../comment-list/comment-list';
+import { TodoAssignment } from '../todoassignment/todoassignment';
 //import { Math1Demo } from '../math1-demo/math1-demo';
 //import { Math2Demo } from '../math2-demo/math2-demo';
 //import { PipesShowcaseComponent } from '../pipes-showcase/pipes-showcase';
@@ -16,7 +17,8 @@ import { CommentList } from '../comment-list/comment-list';
   imports: [
     CommonModule,
     //ProductsComponent,
-    EmployeeAssignList,
+    //EmployeeAssignList,
+    TodoAssignment,
     // PipesDemo,
    // Math1Demo,
    // Math2Demo

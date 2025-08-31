@@ -1,0 +1,42 @@
+<h3 class="text-center">To Do List</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Task</th>
+      <th>isCompleted</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (task of TaskList(); track $index) {
+      <tr>
+        <td>{{task.id}}</td>
+        <td>{{task.name}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="toggleCompletion(task.id)">
+            {{ task.isCompleted ? 'Completed' : 'Not Completed' }}
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div>
+  <h5>Completed Todos</h5>
+  <ul>
+    @for (task of completedToDos(); track $index) {
+      <li>{{task.name}}</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <h5>Remaining Todos</h5>
+  <ul>
+    @for (task of remainingToDos(); track $index) {
+      <li>{{task.name}}</li>
+    }
+  </ul>
+</div>

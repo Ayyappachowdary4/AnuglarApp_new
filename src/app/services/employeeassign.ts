@@ -12,43 +12,46 @@ export interface EmployeeAssign {
   providedIn: 'root'
 })
 export class EmployeeAssignService {
-  // Full employee objects
+ 
   private allEmployees: EmployeeAssign[] = [
     { id: 1, name: 'Murali D', role: 'Developer', salary: 50000 },
     { id: 2, name: 'Rama Teja', role: 'Tester', salary: 45000 },
     { id: 3, name: 'Ashok C', role: 'Developer', salary: 52000 },
-    { id: 4, name: 'Karthick K', role: 'Designer', salary: 48000 }
+    { id: 4, name: 'Karthick K', role: 'Designer', salary: 48000 },
+    { id: 5, name: 'Virat M', role: 'Cricketer', salary: 68000 },
+    { id: 6, name: 'Dhoni MS', role: 'Barber', salary: 2000 },
+    { id: 7, name: 'NTR', role: 'Hero', salary: 10008000 },
+    { id: 8, name: 'CBN', role: 'Politican', salary: 5098000 }
   ];
 
-  // BehaviorSubject to hold current employees
   public employeesSubject = new BehaviorSubject<EmployeeAssign[]>([]);
-  public employees$ = this.employeesSubject.asObservable();
+  public employees$ = this.employeesSubject.asObservable();    // -----so this is doing  BehaviorSubject to hold current employees
 
   constructor() {
-    // Start with first 2 employees
-    this.employeesSubject.next(this.allEmployees.slice(0, 2));
+    
+    this.employeesSubject.next(this.allEmployees.slice(0, 4)); // -----so this is Start with first 2 employees
   }
 
-  // Add a new employee object
+  
   addEmployee(emp: EmployeeAssign) {
-    this.employeesSubject.next([...this.employeesSubject.value, emp]);
+    this.employeesSubject.next([...this.employeesSubject.value, emp]);//// -----so this Add a new employee object
   }
 
-  // Add a random employee from allEmployees
+ 
   addRandomEmployee() {
     const currentIds = this.employeesSubject.value.map(e => e.id);
-    const available = this.allEmployees.filter(e => !currentIds.includes(e.id));
+    const available = this.allEmployees.filter(e => !currentIds.includes(e.id));///this method is doing random employee from all employess
     if (available.length === 0) return;
 
-    this.addEmployee(available[0]); // pick the first available employee
+    this.addEmployee(available[0]); //this will  pick the first available employee
   }
 
-  // Delete employee by id
+  
   deleteEmployee(id: number) {
     this.employeesSubject.next(this.employeesSubject.value.filter(emp => emp.id !== id));
   }
 
-  // Clear all employees
+
   clearEmployees() {
     this.employeesSubject.next([]);
   }
